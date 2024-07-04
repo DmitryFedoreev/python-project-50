@@ -32,7 +32,7 @@ jobs:
         uses: paambaati/codeclimate-action@v5.0.0
         if: github.ref_name == 'main'
         env:
-          CC_TEST_REPORTER_ID: ${{ secrets.1d76389b05931c2aec3d4b859e4684244cf0bac3fbe46c28e0894689248f9754 }}
+          CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE }}
         with:
           coverageCommand: poetry run make test-coverage
           debug: true
