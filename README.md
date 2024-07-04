@@ -4,3 +4,4 @@
 
 ### Example of the program
 [![asciicast](https://asciinema.org/a/666495.svg)](https://asciinema.org/a/666495)
+
