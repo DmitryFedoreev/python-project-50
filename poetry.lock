@@ -30,6 +30,7 @@ files = [
 [package.dependencies]
 flake8 = "*"
 isort = ">=5.0.0,<6"
+pytest = "^6.2"
 
 [package.extras]
 test = ["pytest"]
