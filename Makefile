@@ -16,8 +16,9 @@ package-install: # project install
 package-reinstall: #reinstall project
 	python3 -m pip install --user --force-reinstall dist/*whl
 
-tests:
+test:
 	poetry run pytest -vv
 
 make test-coverage:
 	poetry run pytest --cov=gendiff --cov-report xml tests
+.PHONY: install lint test
