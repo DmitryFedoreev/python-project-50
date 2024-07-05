@@ -10,7 +10,7 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.12"
-pyyaml = "^5.4"
+pyyaml = "5.3.1"
 
 [tool.poetry.scripts]
 gendiff = 'gendiff.gendiff:main'
