@@ -1,34 +1,31 @@
+import os
 import pytest
-from gendiff.gendiff import generate_diff
+from gendiff import generate_diff
 
 
-@pytest.fixture
-def file_paths():
-    file1_path = 'file1.json'
-    file2_path = 'file2.json'
-    return file1_path, file2_path
+FIXTURES_DIR = os.path.abspath('tests/fixtures')
+FILE1_JSON = os.path.join(FIXTURES_DIR, 'file1.json')
+FILE2_JSON = os.path.join(FIXTURES_DIR, 'file2.json')
+FILE1_YML = os.path.join(FIXTURES_DIR, 'file1.yml')
+FILE2_YML = os.path.join(FIXTURES_DIR, 'file2.yml')
+DIFF_TXT = os.path.join(FIXTURES_DIR, 'diff.txt')
+JSON_OUTPUT_TXT = os.path.join(FIXTURES_DIR, 'json_output.txt')
 
 
-def test_generate_diff(file_paths):
-    return file_paths
+def read_file(file_path):
+    with open(file_path, 'r') as file:
+        return file.read().strip()
 
 
-@pytest.fixture
-def file_yaml():
-    file1_yml = 'filepath1.yml'
-    file2_yml = 'filepath2.yml'
-    return file1_yml, file2_yml
-
-
-expected_output = '''{
-  - follow: false
-    host: hexlet.io
-  - proxy: 123.234.53.22
-  - timeout: 50
-  + timeout: 20
-  + verbose: true
-}'''
-
-
-def test_yaml(file_yaml):
-    return expected_output
+@pytest.mark.parametrize("file1, file2, expected_file, formatter", [
+    (FILE1_JSON, FILE2_JSON, DIFF_TXT, "stylish"),
+    (FILE1_YML, FILE2_YML, DIFF_TXT, "stylish"),
+    (FILE1_JSON, FILE2_JSON, JSON_OUTPUT_TXT, "json"),
+    (FILE1_YML, FILE2_YML, JSON_OUTPUT_TXT, "json"),
+])
+def test_generate_diff(file1, file2, expected_file, formatter):
+    expected_result = read_file(expected_file)
+    result = generate_diff(file1, file2, formatter)
+    assert result == expected_result, (
+        f"Failed on {formatter} with {file1} and {file2}"
+    )

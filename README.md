@@ -10,3 +10,6 @@
 
 ### Format yml
 [![asciicast](https://asciinema.org/a/666933.svg)](https://asciinema.org/a/666933)
+
+### Recursive comparison
+[![asciicast](https://asciinema.org/a/668101.svg)](https://asciinema.org/a/668101)
