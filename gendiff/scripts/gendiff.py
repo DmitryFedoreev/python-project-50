@@ -1,5 +1,4 @@
-from gendiff import cli
-from gendiff import generate_diff
+from gendiff import cli, generate_diff
 
 
 def main():

@@ -11,9 +11,13 @@ def build_diff(data1, data2):
         elif key not in data2:
             diff[key] = {'type': 'removed', 'value': value1}
         elif isinstance(value1, dict) and isinstance(value2, dict):
-            diff[key] = {'type': 'nested', 'children': build_diff(value1, value2)}
+            diff[key] = {'type': 'nested',
+                         'children': build_diff(value1, value2)
+                         }
         elif value1 != value2:
-            diff[key] = {'type': 'changed', 'old_value': value1, 'new_value': value2}
+            diff[key] = {'type': 'changed',
+                         'old_value': value1, 'new_value': value2
+                         }
         else:
             diff[key] = {'type': 'unchanged', 'value': value1}
 

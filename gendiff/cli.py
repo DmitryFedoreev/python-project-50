@@ -1,5 +1,6 @@
 import argparse
-from gendiff import generate_diff  # Предполагается, что у вас есть такая функция в модуле gendiff
+
+from gendiff import generate_diff
 
 
 def main():
@@ -15,7 +16,6 @@ def main():
     )
     args = parser.parse_args()
 
-    # Генерация разницы между файлами
     result = generate_diff(args.first_file, args.second_file, args.format)
     print(result)
 

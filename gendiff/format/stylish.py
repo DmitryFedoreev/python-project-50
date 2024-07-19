@@ -29,8 +29,12 @@ def format_stylish(diff):
                     lines.append(f"{indent}  {key}: {current_value}")
 
                 case 'changed':
-                    old_value = format_value(item.get('old_value'), spaces_count)
-                    new_value = format_value(item.get('new_value'), spaces_count)
+                    old_value = format_value(item.get('old_value'),
+                                             spaces_count
+                                             )
+                    new_value = format_value(item.get('new_value'),
+                                             spaces_count
+                                             )
                     lines.extend([
                         f'{indent}- {key}: {old_value}',
                         f'{indent}+ {key}: {new_value}'
