@@ -4,12 +4,13 @@ from gendiff import generate_diff
 
 
 FIXTURES_DIR = os.path.abspath('tests/fixtures')
-FILE1_JSON = os.path.join(FIXTURES_DIR, 'file1.json')
-FILE2_JSON = os.path.join(FIXTURES_DIR, 'file2.json')
-FILE1_YML = os.path.join(FIXTURES_DIR, 'file1.yml')
-FILE2_YML = os.path.join(FIXTURES_DIR, 'file2.yml')
-DIFF_TXT = os.path.join(FIXTURES_DIR, 'diff.txt')
-JSON_OUTPUT_TXT = os.path.join(FIXTURES_DIR, 'json_output.txt')
+FILE1_JSON = os.path.join(FIXTURES_DIR, '/home/dmitry/PycharmProjects/python-project-50/tests/fixtures/file1.json')
+FILE2_JSON = os.path.join(FIXTURES_DIR, '/home/dmitry/PycharmProjects/python-project-50/tests/fixtures/file2.json')
+FILE1_YML = os.path.join(FIXTURES_DIR, '/home/dmitry/PycharmProjects/python-project-50/tests/fixtures/file1.yml')
+FILE2_YML = os.path.join(FIXTURES_DIR, '/home/dmitry/PycharmProjects/python-project-50/tests/fixtures/file2.yml')
+DIFF_TXT = os.path.join(FIXTURES_DIR, '/home/dmitry/PycharmProjects/python-project-50/tests/fixtures/diff.txt')
+JSON_OUTPUT_TXT = os.path.join(FIXTURES_DIR,
+                               "/home/dmitry/PycharmProjects/python-project-50/tests/fixtures/json_output.txt")
 
 
 def read_file(file_path):
