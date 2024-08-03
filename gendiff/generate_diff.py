@@ -1,7 +1,8 @@
+import os
+
 from gendiff.diff_builder import build_diff
 from gendiff.formats import format_diff
 from gendiff.parser import parse_data
-import os
 
 
 def get_file_format(file_path):

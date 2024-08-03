@@ -1,5 +1,6 @@
-import yaml
 import json
+
+import yaml
 
 
 def parse_data(data, data_format):
