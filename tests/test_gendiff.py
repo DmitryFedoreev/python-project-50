@@ -3,14 +3,9 @@ import pytest
 from gendiff import generate_diff
 
 
-FIXTURES_DIR = os.path.abspath('tests/fixtures')
-FILE1_JSON = os.path.join(FIXTURES_DIR, '/home/dmitry/PycharmProjects/python-project-50/tests/fixtures/file1.json')
-FILE2_JSON = os.path.join(FIXTURES_DIR, '/home/dmitry/PycharmProjects/python-project-50/tests/fixtures/file2.json')
-FILE1_YML = os.path.join(FIXTURES_DIR, '/home/dmitry/PycharmProjects/python-project-50/tests/fixtures/file1.yml')
-FILE2_YML = os.path.join(FIXTURES_DIR, '/home/dmitry/PycharmProjects/python-project-50/tests/fixtures/file2.yml')
-DIFF_TXT = os.path.join(FIXTURES_DIR, '/home/dmitry/PycharmProjects/python-project-50/tests/fixtures/diff.txt')
-JSON_OUTPUT_TXT = os.path.join(FIXTURES_DIR,
-                               "/home/dmitry/PycharmProjects/python-project-50/tests/fixtures/json_output.txt")
+def get_fixtures_path(file_name):
+    current_dir = os.path.dirname(__file__)
+    return os.path.join(current_dir, 'fixtures', file_name)
 
 
 def read_file(file_path):
@@ -19,14 +14,20 @@ def read_file(file_path):
 
 
 @pytest.mark.parametrize("file1, file2, expected_file, formatter", [
-    (FILE1_JSON, FILE2_JSON, DIFF_TXT, "stylish"),
-    (FILE1_YML, FILE2_YML, DIFF_TXT, "stylish"),
-    (FILE1_JSON, FILE2_JSON, JSON_OUTPUT_TXT, "json"),
-    (FILE1_YML, FILE2_YML, JSON_OUTPUT_TXT, "json"),
+    ("file1.json", "file2.json", "expected_diff.txt", "stylish"),
+    ("file1.yml", "file2.yml", "expected_diff.txt", "stylish"),
+    ("flat_file1.json", "flat_file2.json", "expected_flat_diff.txt", "stylish"),
+    ("flat_file1.yml", "flat_file2.yml", "expected_flat_diff.txt", "stylish"),
+    ("file1.json", "file2.json", "expected_json_output.txt", "json"),
+    ("file1.yml", "file2.yml", "expected_json_output.txt", "json"),
+    ("file1.json", "file2.json", "expected_plain_output.txt", "plain"),
+    ("file1.yml", "file2.yml", "expected_plain_output.txt", "plain")
 ])
 def test_generate_diff(file1, file2, expected_file, formatter):
-    expected_result = read_file(expected_file)
-    result = generate_diff(file1, file2, formatter)
+    file1_path = get_fixtures_path(file1)
+    file2_path = get_fixtures_path(file2)
+    expected_result = read_file(get_fixtures_path(expected_file))
+    result = generate_diff(file1_path, file2_path, formatter)
     assert result == expected_result, (
         f"Failed on {formatter} with {file1} and {file2}"
     )

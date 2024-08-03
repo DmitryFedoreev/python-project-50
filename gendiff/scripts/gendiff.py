@@ -1,4 +1,8 @@
-from gendiff import cli, generate_diff
+#!/usr/bin/env python
+
+
+from gendiff import cli
+from gendiff import generate_diff
 
 
 def main():

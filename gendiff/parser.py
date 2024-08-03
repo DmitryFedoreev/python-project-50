@@ -1,6 +1,5 @@
-import json
-
 import yaml
+import json
 
 
 def parse_data(data, data_format):
@@ -10,4 +9,4 @@ def parse_data(data, data_format):
         case 'yml' | 'yaml':
             return yaml.safe_load(data)
         case _:
-            raise ValueError("Unsupported data format")
+            raise ValueError("Unsupported data formats")

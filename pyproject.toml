@@ -13,7 +13,7 @@ python = "^3.12"
 pyyaml = "5.3.1"
 
 [tool.poetry.scripts]
-gendiff = 'gendiff.cli:main'
+gendiff = 'gendiff.scripts.gendiff:main'
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.1.0"
